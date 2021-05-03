@@ -4,8 +4,8 @@
  "task": [
     "5 9 * * * https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/scdcg.js, tag=食材大冲关, img-url=https://ae01.alicdn.com/kf/Ue353b658a4424a1e873d0b66620d06a41.jpg, enabled=true",
     "0 1,20,21 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_new.js, tag=滴滴出行, img-url=https://raw.githubusercontent.com/Orz-3/task/master/didi.png, enabled=true",
-    "20 8,9-19/2,20 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_drink.js, tag=滴滴喝水, enabled=true",
-    "1 6,22 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_sleep.js, tag=滴滴睡觉, enabled=true",
+    "20 8,9-19/2,20 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_drink.js, tag=滴滴喝水,https://raw.githubusercontent.com/Orz-3/task/master/didi.png, enabled=true",
+    "1 6,22 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_sleep.js, tag=滴滴睡觉, https://raw.githubusercontent.com/Orz-3/task/master/didi.png, enabled=true",
     "7 4 * * * https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, tag=吾爱破解, enabled=true"
  ]
 }
