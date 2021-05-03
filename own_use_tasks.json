@@ -2,6 +2,6 @@
  "name": "HiYoung task gallery",
  "description": "自用收集方便管理",
  "task": [
-    "5 9 * * * https://raw.githubusercontent.com/WalterYang689/SimpleScripts/main/scdcg.js, tag=食材大冲关, img-url=https://ae01.alicdn.com/kf/Ue353b658a4424a1e873d0b66620d06a41.jpg, enabled=true"
+    "5 9 * * * https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/scdcg.js, tag=食材大冲关, img-url=https://ae01.alicdn.com/kf/Ue353b658a4424a1e873d0b66620d06a41.jpg, enabled=true"
  ]
 }
