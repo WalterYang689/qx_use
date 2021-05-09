@@ -8,6 +8,7 @@
 "1 6,22 * * * https://raw.githubusercontent.com/zZPiglet/Task/master/DiDi/DiDi_sleep.js, tag=滴滴睡觉, img-url=https://raw.githubusercontent.com/Orz-3/task/master/didi.png, enabled=true",
 "7 4 * * * https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, tag=吾爱破解, enabled=true",
 "30 20-23/1 * * * https://raw.githubusercontent.com/nianyuguai/longzhuzhu/main/qx/jd_half_redrain.js, tag=半点京豆雨, enabled=true",
+"10 7 * * * https://jdsharedresourcescdn.azureedge.net/jdresource/jd_syj.js, tag=京东赚京豆, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jd_syj.png, enabled=true",
 "5 0 * * * * https://raw.githubusercontent.com/nianyuguai/longzhuzhu/main/qx/jd_super_redrain.js, tag=京东整点京豆红包雨, img-url=https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/image/jd.png, enabled=true"
 ]
 }
