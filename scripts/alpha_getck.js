@@ -11,9 +11,9 @@ const $ = new API("alpha获取ck");
     }
     else {
         let ckstr = $request.headers.Cookie;
-        $.write(ck, '#alpha_cookie');
+        $.write(ckstr, '#alpha_cookie');
             $.notify('Alpha挖矿获取ck成功', '', ck);
-            console.log(ck);
+            console.log(ckstr);
     }
 
 })().catch((e) => {
