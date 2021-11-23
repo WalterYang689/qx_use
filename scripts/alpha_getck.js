@@ -12,7 +12,7 @@ const $ = new API("alpha获取ck");
     else {
         let ckstr = $request.headers.Cookie;
         $.write(ckstr, '#alpha_cookie');
-            $.notify('Alpha挖矿获取ck成功', '', ck);
+            $.notify('Alpha挖矿获取ck成功', '', ckstr);
             console.log(ckstr);
     }
 
