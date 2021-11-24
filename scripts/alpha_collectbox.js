@@ -1,7 +1,7 @@
 /*
 alpha打开宝箱脚本
 */
-const $ = new API("alpha开宝箱");
+const $ = new ENV("alpha开宝箱");
 !(async () => {
     if ($.env.isNode) {
         console.log('仅限iOS设备用!');
