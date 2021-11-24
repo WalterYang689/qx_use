@@ -7,13 +7,9 @@ let baseUrl = "https://minealpha.net/api/user/"
         fxck()
     } else {
         if (!$.isNode()) {
+            $.log("打印已有ck:"+alphack)
             //开始打开宝箱
             await openBox();
-            console.log(`随机等待3-5秒`)
-            let s = rand(3000, 5000)
-            await $.wait(s)
-            //开始领取奖励
-            await receiveReReward();
         } else {
         
         }
@@ -53,11 +49,14 @@ function openBox() {
         $.get(url, async (err, resp, data) => {
             try {
                 let result = JSON.parse(data);
-                $.log("开箱子结果:"+result.Succeeded)
                 if(result.Succeeded == true){
                     $.log("获得奖励:"+result.RewardText)
-                    $.log("当前速率:"+result.User.LootboxRate)
-                    $.log("余额:"+result.RewardText)
+                    $.log("开箱子获得:"+result.RewardText)
+                    console.log(`随机等待3-5秒领取奖励`)
+                    let s = rand(3000, 5000)
+                    await $.wait(s)
+                    //开始领取奖励
+                    await receiveReReward();
                 }else{
                     $.msg($.name, "", `开启宝箱失败!`)
                 }
