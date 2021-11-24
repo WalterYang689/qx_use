@@ -7,7 +7,7 @@ const $ = new API("alpha开宝箱");
         console.log('仅限iOS设备用!');
     }
     else {
-        let ckstr = $.read("#alpha_cookie")
+        let ckstr = $.read(#alpha_cookie")
         console.log("当前用户ck:$ckstr");
     }
 
