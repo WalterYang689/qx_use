@@ -7,7 +7,6 @@ let baseUrl = "https://minealpha.net/api/user/"
         fxck()
     } else {
         if (!$.isNode()) {
-            $.log("打印已有ck:"+alphack)
             //开始打开宝箱
             await openBox();
             let s = rand(3000, 5000)
