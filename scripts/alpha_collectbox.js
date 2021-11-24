@@ -8,7 +8,7 @@ const $ = new API("alpha开宝箱");
     }
     else {
         let ckstr = $.read(#alpha_cookie")
-        console.log("当前用户ck:$ckstr");
+        console.log("当前用户ck:"+ckstr);
     }
 
 })().catch((e) => {
