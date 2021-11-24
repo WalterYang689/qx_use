@@ -51,7 +51,7 @@ function openBox() {
                 let result = JSON.parse(data);
                 if(result.Succeeded == true){
                     $.log("获得奖励:"+result.RewardText)
-                    $.log("开箱子获得:"+result.RewardText)
+                    $.msg($.name, "", "开箱子获得:"+result.RewardText)
                     console.log(`随机等待3-5秒领取奖励`)
                     let s = rand(3000, 5000)
                     await $.wait(s)
