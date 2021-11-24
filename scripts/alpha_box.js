@@ -27,7 +27,6 @@ let baseUrl = "https://minealpha.net/api/user/"
 function fxck() {
     if ($request.url.indexOf("getGlobal") > -1) {
         const ck = $request.headers['Cookie']
-        $.log('当前ck:'+ck)
         if (ck && alphack != ck){
             $.setdata(ck,"alphack")
             $.msg($.name, "", `获取ck成功`)
