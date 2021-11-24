@@ -10,6 +10,10 @@ let baseUrl = "https://minealpha.net/api/user/"
             $.log("打印已有ck:"+alphack)
             //开始打开宝箱
             await openBox();
+            let s = rand(3000, 5000)
+            await $.wait(s)
+            //开始领取奖励
+            await receiveReReward();
         } else {
         
         }
@@ -52,11 +56,6 @@ function openBox() {
                 if(result.Succeeded == true){
                     $.log("获得奖励:"+result.RewardText)
                     $.msg($.name, "", "开箱子获得:"+result.RewardText)
-                    console.log(`随机等待3-5秒领取奖励`)
-                    let s = rand(3000, 5000)
-                    await $.wait(s)
-                    //开始领取奖励
-                    await receiveReReward();
                 }else{
                     $.msg($.name, "", `开启宝箱失败!`)
                 }
