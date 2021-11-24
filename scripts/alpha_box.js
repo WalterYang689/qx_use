@@ -27,7 +27,7 @@ function fxck() {
         $.log('当前ck:'+ck)
         if (ck && alphack != ck){
             $.setdata(ck,"alphack")
-            $.msg($.name, "", `获取到CK:${ck}`)
+            $.msg($.name, "", `获取ck成功`)
         }
     }
 }
