@@ -27,8 +27,11 @@ let scoreAmount = 0;
 //获取cookie 
 function fxck() {
     if ($request.url.indexOf("find/user/info") > -1) {
+        $.log("开始ck");
         const ck = $request.headers['token']
+        $.log("获取到Ck:"+ck)
         if (ck && dwqToken != ck) {
+            $.log("写入CK:"+ck)
             $.setdata(ck, "dwqToken")
             $.msg($.name, "", `获取ck成功`)
         }
@@ -76,7 +79,7 @@ function firstLogin() {
         $.get(url, async (err, resp, data) => {
             try {
                 let result = JSON.parse(data);
-                if (data.state == "success") {
+                if (result.state == "success") {
                     $.msg($.name, "", "每日初次登录成功\n奖励总数:" + result.data.rewardDwqnum + "\n活力值:" + result.data.calculate)
                 }
             } catch (e) {
