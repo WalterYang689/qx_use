@@ -10,7 +10,7 @@ let scoreAmount = 0
     } else {
         if (!$.isNode()) {
             //开始每天尝试登录
-             await autoLogin();
+            //  await autoLogin();
             // let s = rand(1000, 5000)
             // await $.wait(s)
             // //查询积分列表
@@ -38,34 +38,34 @@ function fxtoken() {
 
 
 
-function autoLogin() {
-    return new Promise((resolve) => {
-        let url = {
-            url: `${baseUrl}automatic/login`,
-            headers: {
-                "token": dwqToken
-            }
-        }
-        $.post(url, async (err, resp, data) => {
-            try {
-                if (resp.statusCode == 200) {
-                    $.log("自动登录成功")
-                    let result = JSON.parse(data);
-                    $.setdata(result.message, "dwqToken")
-                    $.msg($.name, "", `自动更新token成功:${result.message}`)
-                    // await $.wait(rand(1000, 2000))
-                    // firstLogin();
-                } else {
-                    // autoLogin()
-                }
-            } catch (e) {
-                $.logErr(e, resp);
-            } finally {
-                resolve()
-            }
-        }, 0)
-    })
-}
+// function autoLogin() {
+//     return new Promise((resolve) => {
+//         let url = {
+//             url: `${baseUrl}automatic/login`,
+//             headers: {
+//                 "token": dwqToken
+//             }
+//         }
+//         $.post(url, async (err, resp, data) => {
+//             try {
+//                 if (resp.statusCode == 200) {
+//                     $.log("自动登录成功")
+//                     let result = JSON.parse(data);
+//                     $.setdata(result.message, "dwqToken")
+//                     $.msg($.name, "", `自动更新token成功:${result.message}`)
+//                     // await $.wait(rand(1000, 2000))
+//                     // firstLogin();
+//                 } else {
+//                     // autoLogin()
+//                 }
+//             } catch (e) {
+//                 $.logErr(e, resp);
+//             } finally {
+//                 resolve()
+//             }
+//         }, 0)
+//     })
+// }
 
 
 
