@@ -10,7 +10,7 @@ let scoreAmount = 0
     } else {
         if (!$.isNode()) {
             //开始每天尝试登录
-            // await autoLogin();
+             await autoLogin();
             // let s = rand(1000, 5000)
             // await $.wait(s)
             // //查询积分列表
@@ -28,47 +28,44 @@ let scoreAmount = 0
 //获取cookie 
 function fxtoken() {
     if ($request.url.indexOf("find/user/info") > -1) {
-        $.log("开始token");
         var token = $request.headers['token']
-        $.log("获取到token:" + token)
         if (token && dwqToken != token) {
-            $.log("写入token:" + token)
             $.setdata(token, "dwqToken")
-            $.msg($.name, "", `获取token成功`)
+            $.msg($.name, "", `Token获取成功:${token}`)
         }
     }
 }
 
 
 
-// function autoLogin() {
-//     return new Promise((resolve) => {
-//         let url = {
-//             url: `${baseUrl}automatic/login`,
-//             headers: {
-//                 "token": dwqToken
-//             }
-//         }
-//         $.post(url, async (err, resp, data) => {
-//             try {
-//                 if (resp.statusCode == 200) {
-//                     $.log("自动登录成功")
-//                     let result = JSON.parse(data);
-//                     $.setdata(result.message, "dwqToken")
-//                     $.msg($.name, "", `自动更新token成功`)
-//                     await $.wait(rand(1000, 2000))
-//                     firstLogin();
-//                 } else {
-//                     // autoLogin()
-//                 }
-//             } catch (e) {
-//                 $.logErr(e, resp);
-//             } finally {
-//                 resolve()
-//             }
-//         }, 0)
-//     })
-// }
+function autoLogin() {
+    return new Promise((resolve) => {
+        let url = {
+            url: `${baseUrl}automatic/login`,
+            headers: {
+                "token": dwqToken
+            }
+        }
+        $.post(url, async (err, resp, data) => {
+            try {
+                if (resp.statusCode == 200) {
+                    $.log("自动登录成功")
+                    let result = JSON.parse(data);
+                    $.setdata(result.message, "dwqToken")
+                    $.msg($.name, "", `自动更新token成功:${result.message}`)
+                    // await $.wait(rand(1000, 2000))
+                    // firstLogin();
+                } else {
+                    // autoLogin()
+                }
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve()
+            }
+        }, 0)
+    })
+}
 
 
 
