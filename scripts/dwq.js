@@ -28,7 +28,9 @@ let scoreAmount = 0
 //获取cookie 
 function fxtoken() {
     if ($request.url.indexOf("find/user/info") > -1) {
+        $.log("查询到已有token:" + dwqToken)
         var token = $request.headers['token']
+        $.log("获取到token:" + token)
         if (token && dwqToken != token) {
             $.setdata(token, "dwqToken")
             $.msg($.name, "", `Token获取成功:${token}`)
