@@ -54,9 +54,9 @@ function getCurUserInfo(rewardRate) {
                 if (result.Succeeded == true) {
                     $.log("个人信息:" + JSON.stringify(result.User));
                     let balance = result.User.Balance
-                    var lootBoxBalance = result.User.LootboxBalance
+                    var lootBoxBalance = result.User.LootboxBalance.toFixed(0)
                     var userRate = result.UserRate
-                    $.msg($.name, "", "当前资产如下:\n" +'此次成功领取奖励速率:'+rewardRate+ '\n当前总挖矿速率:' + userRate + '\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产' + balance)
+                    $.msg($.name, "", '成功领取奖励:'+rewardRate+ '\n当前总挖矿速率:' + userRate + '\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产' + balance)
                 }
             } catch (e) {
                 $.logErr(e, resp);
@@ -83,7 +83,6 @@ function openBox() {
                 let result = JSON.parse(data);
                 if (result.Succeeded == true) {
                     $.log("获得奖励:" + result.RewardText)
-                    $.msg($.name, "", "开箱子获得:" + result.RewardText)
                 } else {
                     $.msg($.name, "", `开启宝箱失败!`)
                 }
