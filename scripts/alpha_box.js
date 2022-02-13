@@ -53,6 +53,11 @@ function getCurUserInfo(rewardRate) {
                 let result = JSON.parse(data);
                 if (result.Succeeded == true) {
                     $.log("个人信息:" + JSON.stringify(result.User));
+                    var lastStartWorkTime = result.User.StartWorkTimestamp;
+                    if(lastStartWorkTime + 24*3600*1000 >= new Date().getTime()){
+                        //时间超过24h，需要开启新一轮挖矿
+                       await startNewRoundWork()
+                    }
                     let balance = result.User.Balance
                     var lootBoxBalance = result.User.LootboxBalance.toFixed(0)
                     var userRate = result.UserRate
@@ -68,6 +73,31 @@ function getCurUserInfo(rewardRate) {
 }
 
 
+function startNewRoundWork() {
+    return new Promise((resolve) => {
+        let url = {
+            url: `${baseUrl}startWork`,
+            headers: {
+                "Cookie": alphack
+            }
+        }
+        $.get(url, async (err, resp, data) => {
+            try {
+                let result = JSON.parse(data);
+                if (result.Succeeded == true) {
+                    $.msg($.name, "", '开启新一轮挖矿成功!')
+                } else {
+                    $.log("开启新一轮挖矿失败:" + data);
+                }
+
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve()
+            }
+        }, 0)
+    })
+}
 
 
 function openBox() {
@@ -84,7 +114,7 @@ function openBox() {
                 if (result.Succeeded == true) {
                     $.log("获得奖励:" + result.RewardText)
                 } else {
-                    $.log("开启宝箱奖励失败")
+                    $.log("开启宝箱失败!")
                 }
 
             } catch (e) {
