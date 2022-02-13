@@ -1,6 +1,6 @@
 const $ = new Env('Alpha');
 
-let alphack = $.isNode() ? (process.env.alphack ? process.env.alphack : "") : ($.getdata('alphack') ? $.getdata('alphack') : "")
+let alphack = $.isNode() ? (process.env.alphack ? process.env.alphack : "") : ($.getdata('alphack') ? $.getdata('alphack') : ".AspNetCore.Identity.Application=CfDJ8Ocpux9xDblJqOVkQ4m1zmJkgEjzrrwsr59q4qQXHtpVwHSLtvSPtJUpi9LdHDiLwPGoCRoZxNfp52XMyPBijiGveP9jevxGfDyXK-3-2qVaCeGNv2FpCh8j6ux6zgt-_QGi6qLpeC-in07yC9dwGm3NXpBTxnBglhwHfKaLJKNicOodi7xzExLP7SLPyGHEdor5vrABWRWEEiRRp3L2z44TG5vz6CGbIiLJumjP2Ght0gR0rqIOwy2I9QsfC37Z6kYjAyrhEkF7xvy29OKtLda7eDWLkjR20zdu4cuFdNp-1VuXW0FEeQNsFuhA63bqUSTgu3wbtz2DeR7MvikADnenmJjM10Q3t9SHBB7eZlMzTkpgIAgwi2kEFVl0r4pJRZB1iULowL8vP9Cu76mX6f7owtgDIApGt_pxkLJu41YWncPsGfnKgBkSocoqbY6yCcXOiIEkM0GYdtwKDZWgZbPYIfFRK8IWIh80Y7gvLxalCJ8yKSaaSpleb4oXO2spI8n13Wd1coFzLYtQRHkSv5bQzA2HdeG8sDSfcx7YF_CVCurM_R3Kh87LITr7aqTX22TKO_ntZv8c3a8vWZ9nhX4knshvLV8V3VY6HipH1qaEVaSsivUs_TDory4t3qoqTlR_f-eoWbOJ_Efd_2Si9CCIyfTX19pnOBa1kP-vvUoIhLCMHB5yUVh4CG-IKcgHAppP2Cvk3RS1GVVqO9LmkZ4")
 let baseUrl = "https://minealpha.net/api/user/"
 !(async () => {
     if (typeof $request !== "undefined") {
@@ -14,7 +14,7 @@ let baseUrl = "https://minealpha.net/api/user/"
             //开始领取奖励
             await receiveReReward();
         } else {
-        
+
         }
     }
 })()
@@ -27,8 +27,8 @@ let baseUrl = "https://minealpha.net/api/user/"
 function fxck() {
     if ($request.url.indexOf("getGlobal") > -1) {
         const ck = $request.headers['Cookie']
-        if (ck && alphack != ck){
-            $.setdata(ck,"alphack")
+        if (ck && alphack != ck) {
+            $.setdata(ck, "alphack")
             $.msg($.name, "", `获取ck成功`)
         }
     }
@@ -40,24 +40,54 @@ function rand(min, max) {
 
 
 
-function openBox() {
+function getCurUserInfo(rewardRate) {
     return new Promise((resolve) => {
         let url = {
-            url: `${baseUrl}openLootBox`,
+            url: `${baseUrl}currentUser`,
             headers: {
-             "Cookie": alphack
+                "Cookie": alphack
             }
         }
         $.get(url, async (err, resp, data) => {
             try {
                 let result = JSON.parse(data);
-                if(result.Succeeded == true){
-                    $.log("获得奖励:"+result.RewardText)
-                    $.msg($.name, "", "开箱子获得:"+result.RewardText)
-                }else{
+                if (result.Succeeded == true) {
+                    $.log("个人信息:" + JSON.stringify(result.User));
+                    let balance = result.User.Balance
+                    var lootBoxBalance = result.User.LootboxBalance
+                    var userRate = result.UserRate
+                    $.msg($.name, "", "当前资产如下:\n" +'此次成功领取奖励速率:'+rewardRate+ '\n当前总挖矿速率:' + userRate + '\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产' + balance)
+                }
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve()
+            }
+        }, 0)
+    })
+}
+
+
+
+
+function openBox() {
+    return new Promise((resolve) => {
+        let url = {
+            url: `${baseUrl}openLootBox`,
+            headers: {
+                "Cookie": alphack
+            }
+        }
+        $.get(url, async (err, resp, data) => {
+            try {
+                let result = JSON.parse(data);
+                if (result.Succeeded == true) {
+                    $.log("获得奖励:" + result.RewardText)
+                    $.msg($.name, "", "开箱子获得:" + result.RewardText)
+                } else {
                     $.msg($.name, "", `开启宝箱失败!`)
                 }
-               
+
             } catch (e) {
                 $.logErr(e, resp);
             } finally {
@@ -73,19 +103,16 @@ function receiveReReward() {
         let url = {
             url: `${baseUrl}collectLootBox`,
             headers: {
-             "Cookie": alphack
+                "Cookie": alphack
             }
         }
         $.get(url, async (err, resp, data) => {
             try {
                 let result = JSON.parse(data);
-                $.log("领奖励结果:"+result.Succeeded)
-                if(result.Succeeded == true){
-                    $.msg($.name, "", `领取奖励成功!`)  
-                }else{
-                    $.msg($.name, "", `领取奖励失败!`)
+                $.log("领奖励结果:" + result.Succeeded)
+                if (result.Succeeded == true) {
+                    await getCurUserInfo(result.RewardText)
                 }
-               
             } catch (e) {
                 $.logErr(e, resp);
             } finally {
