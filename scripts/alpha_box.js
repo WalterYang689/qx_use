@@ -1,6 +1,6 @@
 const $ = new Env('Alpha');
 
-let alphack = $.isNode() ? (process.env.alphack ? process.env.alphack : "") : ($.getdata('alphack') ? $.getdata('alphack') : ".AspNetCore.Identity.Application=CfDJ8Ocpux9xDblJqOVkQ4m1zmJkgEjzrrwsr59q4qQXHtpVwHSLtvSPtJUpi9LdHDiLwPGoCRoZxNfp52XMyPBijiGveP9jevxGfDyXK-3-2qVaCeGNv2FpCh8j6ux6zgt-_QGi6qLpeC-in07yC9dwGm3NXpBTxnBglhwHfKaLJKNicOodi7xzExLP7SLPyGHEdor5vrABWRWEEiRRp3L2z44TG5vz6CGbIiLJumjP2Ght0gR0rqIOwy2I9QsfC37Z6kYjAyrhEkF7xvy29OKtLda7eDWLkjR20zdu4cuFdNp-1VuXW0FEeQNsFuhA63bqUSTgu3wbtz2DeR7MvikADnenmJjM10Q3t9SHBB7eZlMzTkpgIAgwi2kEFVl0r4pJRZB1iULowL8vP9Cu76mX6f7owtgDIApGt_pxkLJu41YWncPsGfnKgBkSocoqbY6yCcXOiIEkM0GYdtwKDZWgZbPYIfFRK8IWIh80Y7gvLxalCJ8yKSaaSpleb4oXO2spI8n13Wd1coFzLYtQRHkSv5bQzA2HdeG8sDSfcx7YF_CVCurM_R3Kh87LITr7aqTX22TKO_ntZv8c3a8vWZ9nhX4knshvLV8V3VY6HipH1qaEVaSsivUs_TDory4t3qoqTlR_f-eoWbOJ_Efd_2Si9CCIyfTX19pnOBa1kP-vvUoIhLCMHB5yUVh4CG-IKcgHAppP2Cvk3RS1GVVqO9LmkZ4")
+let alphack = $.isNode() ? (process.env.alphack ? process.env.alphack : "") : ($.getdata('alphack') ? $.getdata('alphack') : "")
 let baseUrl = "https://minealpha.net/api/user/"
 !(async () => {
     if (typeof $request !== "undefined") {
