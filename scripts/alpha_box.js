@@ -84,7 +84,7 @@ function openBox() {
                 if (result.Succeeded == true) {
                     $.log("获得奖励:" + result.RewardText)
                 } else {
-                    $.msg($.name, "", `开启宝箱失败!`)
+                    $.log("开启宝箱奖励失败")
                 }
 
             } catch (e) {
