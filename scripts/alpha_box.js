@@ -59,9 +59,10 @@ function getCurUserInfo(rewardRate) {
                        await startNewRoundWork()
                     }
                     let balance = result.User.Balance
-                    var lootBoxBalance = result.User.LootboxBalance.toFixed(0)
+                    var digNum = result.User.NumberOfSessionsCompleted
+                    var lootBoxBalance = result.User.LootboxBalance
                     var userRate = result.UserRate
-                    $.msg($.name, "", '成功领取奖励:'+rewardRate+ '\n当前总挖矿速率:' + userRate + '\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产' + balance)
+                    $.msg($.name, "", '成功领取奖励:'+rewardRate+ '\n当前总挖矿速率:' + userRate + '\n已完成挖矿次数:' + digNum +'\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产:' + balance)
                 }
             } catch (e) {
                 $.logErr(e, resp);
