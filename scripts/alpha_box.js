@@ -54,9 +54,11 @@ function getCurUserInfo(rewardRate) {
                 if (result.Succeeded == true) {
                     $.log("个人信息:" + JSON.stringify(result.User));
                     var lastStartWorkTime = result.User.StartWorkTimestamp;
-                    if(lastStartWorkTime + 24*3600*1000 >= new Date().getTime()){
+                    if(lastStartWorkTime + 24*3600*1000 <= new Date().getTime()){
                         //时间超过24h，需要开启新一轮挖矿
                        await startNewRoundWork()
+                    }else{
+                     $.log("时间不足24h,暂不开启新一轮挖矿")
                     }
                     let balance = result.User.Balance
                     var digNum = result.User.NumberOfSessionsCompleted
@@ -82,7 +84,7 @@ function startNewRoundWork() {
                 "Cookie": alphack
             }
         }
-        $.get(url, async (err, resp, data) => {
+        $.post(url, async (err, resp, data) => {
             try {
                 let result = JSON.parse(data);
                 if (result.Succeeded == true) {
