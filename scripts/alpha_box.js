@@ -81,7 +81,8 @@ function startNewRoundWork() {
         let url = {
             url: `${baseUrl}startWork`,
             headers: {
-                "Cookie": alphack
+                "Cookie": alphack,
+                "Accept-Encoding":"gzip, deflate, br","Content-Type":"application/json;charset=utf-8"
             }
         }
         $.post(url, async (err, resp, data) => {
