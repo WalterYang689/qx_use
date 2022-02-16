@@ -56,7 +56,7 @@ function getCurUserInfo(rewardRate) {
                     var lastStartWorkTime = result.User.StartWorkTimestamp;
                     if(lastStartWorkTime + 24*3600*1000 <= new Date().getTime()){
                         //时间超过24h，需要开启新一轮挖矿
-                       await startNewRoundWork()
+                       await startNewRoundWork(result.User.ExternalProviderId)
                     }else{
                      $.log("时间不足24h,暂不开启新一轮挖矿")
                     }
@@ -76,13 +76,16 @@ function getCurUserInfo(rewardRate) {
 }
 
 
-function startNewRoundWork() {
+function startNewRoundWork(id) {
     return new Promise((resolve) => {
         let url = {
             url: `${baseUrl}startWork`,
             headers: {
                 "Cookie": alphack,
                 "Accept-Encoding":"gzip, deflate, br","Content-Type":"application/json;charset=utf-8"
+            },
+            body:{
+                "externalProviderId": id
             }
         }
         $.post(url, async (err, resp, data) => {
