@@ -82,7 +82,10 @@ function startNewRoundWork(id) {
             url: `${baseUrl}startWork`,
             headers: {
                 "Cookie": alphack,
-                "Accept-Encoding":"gzip, deflate, br","Content-Type":"application/json;charset=utf-8"
+                "Accept-Encoding":"gzip, deflate, br",
+                "Content-Type":"application/json;charset=utf-8",
+                "Accept":"application/json, text/plain, */*",
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148[jhsggiusfguiys784i4s763yggfyustfwgyu2768fevuyer,1.0]"
             },
             body:{
                 "externalProviderId": id
