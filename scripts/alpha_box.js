@@ -1,5 +1,5 @@
 const $ = new Env('Alpha');
-
+const axios = require('axios');
 let alphack = $.isNode() ? (process.env.alphack ? process.env.alphack : "") : ($.getdata('alphack') ? $.getdata('alphack') : "")
 let baseUrl = "https://minealpha.net/api/user/"
 !(async () => {
@@ -23,7 +23,7 @@ let baseUrl = "https://minealpha.net/api/user/"
 
 
 
-//获取cookie 
+// //获取cookie 
 function fxck() {
     if ($request.url.indexOf("getGlobal") > -1) {
         const ck = $request.headers['Cookie']
@@ -74,41 +74,48 @@ function getCurUserInfo(rewardRate) {
         }, 0)
     })
 }
-
-
 function startNewRoundWork(id) {
     return new Promise((resolve) => {
-        let url = {
+        axios({
+            method:"post",
             url: `${baseUrl}startWork`,
             headers: {
                 "Cookie": alphack,
-                "Accept-Encoding":"gzip, deflate, br",
-                "Content-Type":"application/json;charset=utf-8",
-                "Accept":"application/json, text/plain, */*",
                 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148[jhsggiusfguiys784i4s763yggfyustfwgyu2768fevuyer,1.0]"
             },
-            body:{
+            data: {
                 "externalProviderId": id
             }
-        }
-        $.post(url, async (err, resp, data) => {
-            try {
-                let result = JSON.parse(data);
-                if (result.Succeeded == true) {
-                    $.msg($.name, "", '开启新一轮挖矿成功!')
-                } else {
-                    $.log("开启新一轮挖矿失败:" + data);
-                }
-
-            } catch (e) {
-                $.logErr(e, resp);
-            } finally {
-                resolve()
+        }).then(res=>{
+            let result = res.data
+            if (result.Succeeded == true) {
+                $.msg($.name, "", '开启新一轮挖矿成功!')
+            } else {
+                $.log("开启新一轮挖矿失败:" + JSON.stringify(result));
             }
-        }, 0)
+            resolve()
+        }).catch(err=>{
+            console.log(err)
+            $.logErr(err, '失败');
+            resolve()
+        })
+        // $.post(url, async (err, resp, data) => {
+        //     console.log(data)    
+        //             try {
+        //         let result = JSON.parse(data);
+        //         if (result.Succeeded == true) {
+        //             $.msg($.name, "", '开启新一轮挖矿成功!')
+        //         } else {
+        //             $.log("开启新一轮挖矿失败:" + data);
+        //         }
+        //     } catch (e) {
+        //         $.logErr(e, resp);
+        //     } finally {
+        //         resolve()
+        //     }
+        // }, 0)
     })
 }
-
 
 function openBox() {
     return new Promise((resolve) => {
