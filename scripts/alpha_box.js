@@ -1,21 +1,18 @@
 const $ = new Env('Alpha');
 const axios = require('axios');
+const notify = $.isNode() ? require('./sendNotify') : '';
 let alphack = $.isNode() ? (process.env.alphack ? process.env.alphack : "") : ($.getdata('alphack') ? $.getdata('alphack') : "")
 let baseUrl = "https://minealpha.net/api/user/"
 !(async () => {
     if (typeof $request !== "undefined") {
         fxck()
     } else {
-        if (!$.isNode()) {
-            //开始打开宝箱
-            await openBox();
-            let s = rand(3000, 5000)
-            await $.wait(s)
-            //开始领取奖励
-            await receiveReReward();
-        } else {
-
-        }
+        //开始打开宝箱
+        await openBox();
+        let s = rand(3000, 5000)
+        await $.wait(s)
+        //开始领取奖励
+        await receiveReReward();
     }
 })()
     .catch((e) => $.logErr(e))
@@ -64,6 +61,9 @@ function getCurUserInfo(rewardRate) {
                     var digNum = result.User.NumberOfSessionsCompleted
                     var lootBoxBalance = result.User.LootboxBalance
                     var userRate = result.UserRate
+                    if ($.isNode()) {
+                        await notify.sendNotify(`Alpha`, '成功领取奖励:'+rewardRate+ '\n当前总挖矿速率:' + userRate + '\n已完成挖矿次数:' + digNum +'\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产:' + balance);
+                     }
                     $.msg($.name, "", '成功领取奖励:'+rewardRate+ '\n当前总挖矿速率:' + userRate + '\n已完成挖矿次数:' + digNum +'\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产:' + balance)
                 }
             } catch (e) {
@@ -90,6 +90,9 @@ function startNewRoundWork(id) {
             let result = res.data
             if (result.Succeeded == true) {
                 $.msg($.name, "", '开启新一轮挖矿成功!')
+                if ($.isNode()) {
+                  notify.sendNotify(`Alpha`, '开启新一轮挖矿成功');
+                }
             } else {
                 $.log("开启新一轮挖矿失败:" + JSON.stringify(result));
             }
@@ -99,21 +102,6 @@ function startNewRoundWork(id) {
             $.logErr(err, '失败');
             resolve()
         })
-        // $.post(url, async (err, resp, data) => {
-        //     console.log(data)    
-        //             try {
-        //         let result = JSON.parse(data);
-        //         if (result.Succeeded == true) {
-        //             $.msg($.name, "", '开启新一轮挖矿成功!')
-        //         } else {
-        //             $.log("开启新一轮挖矿失败:" + data);
-        //         }
-        //     } catch (e) {
-        //         $.logErr(e, resp);
-        //     } finally {
-        //         resolve()
-        //     }
-        // }, 0)
     })
 }
 
