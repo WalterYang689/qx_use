@@ -1,4 +1,4 @@
-const $ = new Env('第五区-挖矿')
+const $ = new Env('第五区')
 const axios = require('axios');
 const notify = $.isNode() ? require('./sendNotify') : '';
 
@@ -21,6 +21,7 @@ let baseUrl = "https://h5.diwuqu.vip/api/app/v1/"
 let scoreAmount = 0
 
 !(async () => {
+    notify.sendNotify($.name,"测试一下");
     if ($.isNode) {
         for (let i = 0; i < TokenDwqs.length; i++) {
             console.log(`开始执行第${i + 1}个账号`);
@@ -30,7 +31,7 @@ let scoreAmount = 0
             await $.wait(rand(1000, 2000))
             await fetchWaitingScores(dwqToken)
             if (scoreAmount > 0) {
-                await notify.send($.name, `第${i + 1}个账号执行成功,共计收取到${scoreAmount}个积分`);
+                await notify.sendNotify($.name, `第${i + 1}个账号执行成功,共计收取到${scoreAmount}个积分`);
                 scoreAmount = 0;
             }
         }
