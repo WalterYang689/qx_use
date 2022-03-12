@@ -1,22 +1,38 @@
-const $ = new Env('dwq')
+const $ = new Env('第五区-挖矿')
+const axios = require('axios');
+const notify = $.isNode() ? require('./sendNotify') : '';
 
-let dwqToken = $.isNode() ? (process.env.dwqToken ? process.env.dwqToken : "") : ($.getdata('dwqToken') ? $.getdata('dwqToken') : "")
+let TokenDwqs = [
+]
+
+// 判断环境变量里面是否有dwq ck
+if (process.env.DWQ_TOKEN) {
+    if (process.env.DWQ_TOKEN.indexOf('&') > -1) {
+        TokenDwqs = process.env.DWQ_TOKEN.split('&');
+    } else if (process.env.DWQ_TOKEN.indexOf('\n') > -1) {
+        TokenDwqs = process.env.DWQ_TOKEN.split('\n');
+    } else {
+        TokenDwqs = [process.env.DWQ_TOKEN];
+    }
+}
+TokenDwqs = [...new Set(TokenDwqs.filter(item => !!item))]
+console.log(`\n====================共${TokenDwqs.length}个DWQ_TOKEN=========\n`);
 let baseUrl = "https://h5.diwuqu.vip/api/app/v1/"
 let scoreAmount = 0
-!(async () => {
-    if (typeof $request !== "undefined") {
-        $.log("开始");
-        fxtoken()
-    } else {
-        if (!$.isNode()) {
-            //开始每天尝试登录
-            //  await autoLogin();
-            // let s = rand(1000, 5000)
-            // await $.wait(s)
-            // //查询积分列表
-            // await fetchHomeScoreList();
-        } else {
 
+!(async () => {
+    if ($.isNode) {
+        for (let i = 0; i < TokenDwqs.length; i++) {
+            console.log(`开始执行第${i + 1}个账号`);
+            await $.wait(rand(1000, 2000))
+            let dwqToken = TokenDwqs[i]
+            await autoLogin(dwqToken);
+            await $.wait(rand(1000, 2000))
+            await fetchWaitingScores(dwqToken)
+            if (scoreAmount > 0) {
+                await notify.send($.name, `第${i + 1}个账号执行成功,共计收取到${scoreAmount}个积分`);
+                scoreAmount = 0;
+            }
         }
     }
 })()
@@ -40,118 +56,117 @@ function fxtoken() {
 
 
 
-// function autoLogin() {
-//     return new Promise((resolve) => {
-//         let url = {
-//             url: `${baseUrl}automatic/login`,
-//             headers: {
-//                 "token": dwqToken
-//             }
-//         }
-//         $.post(url, async (err, resp, data) => {
-//             try {
-//                 if (resp.statusCode == 200) {
-//                     $.log("自动登录成功")
-//                     let result = JSON.parse(data);
-//                     $.setdata(result.message, "dwqToken")
-//                     $.msg($.name, "", `自动更新token成功:${result.message}`)
-//                     // await $.wait(rand(1000, 2000))
-//                     // firstLogin();
-//                 } else {
-//                     // autoLogin()
-//                 }
-//             } catch (e) {
-//                 $.logErr(e, resp);
-//             } finally {
-//                 resolve()
-//             }
-//         }, 0)
-//     })
-// }
+function autoLogin(dwqToken) {
+    return new Promise((resolve) => {
+        let url = {
+            url: `${baseUrl}automatic/login`,
+            headers: {
+                "token": dwqToken
+            }
+        }
+        $.post(url, async (err, resp, data) => {
+            try {
+                if (resp.statusCode == 200) {
+                    $.log("自动登录成功")
+                    await $.wait(rand(1000, 2000))
+                    firstLogin(dwqToken);
+                } else {
+                    // autoLogin()
+                }
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve()
+            }
+        }, 0)
+    })
+}
 
 
 
-// function firstLogin() {
-//     return new Promise((resolve) => {
-//         let url = {
-//             url: `${baseUrl}user/isFirstLogin`,
-//             headers: {
-//                 "token": dwqToken
-//             }
-//         }
-//         $.get(url, async (err, resp, data) => {
-//             try {
-//                 let result = JSON.parse(data);
-//                 if (result.state == "success") {
-//                     $.msg($.name, "", "每日初次登录成功\n奖励总数:" + result.data.rewardDwqnum + "\n活力值:" + result.data.calculate)
-//                 }
-//             } catch (e) {
-//                 $.logErr(e, resp);
-//             } finally {
-//                 resolve()
-//             }
-//         }, 0)
-//     })
-// }
+function firstLogin(dwqToken) {
+    return new Promise((resolve) => {
+        let url = {
+            url: `${baseUrl}user/isFirstLogin`,
+            headers: {
+                "token": dwqToken
+            }
+        }
+        $.get(url, async (err, resp, data) => {
+            try {
+                let result = JSON.parse(data);
+                if (result.state == "success") {
+                    console.log("每日初次登录成功\n奖励总数:" + result.data.rewardDwqnum + "\n活力值:" + result.data.calculate)
+                }
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve()
+            }
+        }, 0)
+    })
+}
 
 
 
-// function receiveScore(id, score) {
-//     return new Promise((resolve) => {
-//         let url = {
-//             url: `${baseUrl}record/accept/${id}`,
-//             body: { "pageNum": 1, "pageSize": 99 },
-//             headers: {
-//                 "token": dwqToken
-//             }
-//         }
-//         $.get(url, async (err, resp, data) => {
-//             try {
-//                 let result = JSON.parse(data)
-//                 if (result.state == "success") {
-//                     scoreAmount += score;
-//                 }
-//             } catch (e) {
-//                 $.logErr(e, resp);
-//             } finally {
-//                 resolve()
-//             }
-//         }, 0)
-//     })
-// }
+function receiveScore(dwqToken, id, score) {
+    return new Promise((resolve) => {
+        axios({
+            method: "put",
+            url: `${baseUrl}record/accept/${id}`,
+            headers: {
+                "token": dwqToken
+            }
+        }).then(async res => {
+            let rep = res.data;
+            if (rep.state == "success") {
+                scoreAmount += score;
+                console.log(`这个气泡领取到${score}积分,此次运行共计领取到${scoreAmount}积分`)
+            }
+        }).catch(err => {
+            console.log(err)
+            $.logErr(err, '失败');
+            resolve()
+        })
+    })
+
+
+}
 
 
 
+function fetchWaitingScores(dwqToken) {
+    return new Promise((resolve) => {
+        axios({
+            method: "post",
+            url: `${baseUrl}records/waiting/list`,
+            headers: {
+                "token": dwqToken
+            },
+            data: {
+                "pageNum": 1,
+                "pageSize": 99
+            },
 
-// function fetchHomeScoreList() {
-//     return new Promise((resolve) => {
-//         let url = {
-//             url: `${baseUrl}records/waiting/list`,
-//             body: { "pageNum": 1, "pageSize": 99 },
-//             headers: {
-//                 "token": dwqToken
-//             }
-//         }
-//         $.post(url, async (err, resp, data) => {
-//             try {
-//                 let result = JSON.parse(data)
-//                 if (result.state == "success") {
-//                     var list = result.data.list;
-//                     list.map((e) => {
-//                         await receiveScore(e.id, e.value)
-//                         await $.wait(rand(1000, 2000));
-//                     })
-//                     $.msg($.name, "", "今天共领取奖励:" + scoreAmount)
-//                 }
+        }).then(async res => {
+            let rep = res.data;
+            if (rep.state == "success") {
+                console.log(`发现${rep.data.size}个待领取积分`);
+                let dataList = rep.data.list
+                for (var i in dataList) {
+                    receiveScore(dwqToken, dataList[i].id, dataList[i].value)
+                    await $.wait(rand(1000, 2000))
+                }
+            }
+        }).catch(err => {
+            console.log(err)
+            $.logErr(err, '失败');
+            resolve()
+        })
+    })
+}
 
-//             } catch (e) {
-//                 $.logErr(e, resp);
-//             } finally {
-//                 resolve()
-//             }
-//         }, 0)
-//     })
-// }
+
 
 function rand(min, max) {
     return parseInt(Math.random() * (max - min + 1) + min, 10);
