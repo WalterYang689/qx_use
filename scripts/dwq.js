@@ -21,7 +21,6 @@ let baseUrl = "https://h5.diwuqu.vip/api/app/v1/"
 let scoreAmount = 0
 
 !(async () => {
-    notify.sendNotify($.name,"测试一下");
     if ($.isNode) {
         for (let i = 0; i < TokenDwqs.length; i++) {
             console.log(`开始执行第${i + 1}个账号`);
