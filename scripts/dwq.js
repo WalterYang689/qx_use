@@ -56,6 +56,34 @@ function fxtoken() {
 
 
 
+function luckyDraw(dwqToken,userId) {
+    return new Promise((resolve) => {
+        let url = {
+            url: `${baseUrl}luckDraws?userId=${userId}`,
+            headers: {
+                "token": dwqToken
+            }
+        }
+        $.get(url, async (err, resp, data) => {
+            try {
+                let result = JSON.parse(data)
+                if (result.state == "success") {
+                   console.log(`今天抽奖参与成功，获取到${result.data}个DWQ`)
+                } else {
+                  console.log(`今天抽奖参与失败:${result.message}`)
+                }
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve()
+            }
+        }, 0)
+    })
+}
+
+
+
+
 function autoLogin(dwqToken) {
     return new Promise((resolve) => {
         let url = {
@@ -97,6 +125,11 @@ function firstLogin(dwqToken) {
                 let result = JSON.parse(data);
                 if (result.state == "success") {
                     console.log("每日初次登录成功\n奖励总数:" + result.data.rewardDwqnum + "\n活力值:" + result.data.calculate)
+                    let hour = new Date().getHours();
+                    if (hour == 9) {
+                        //8点才去参与抽奖
+                        await luckyDraw(dwqToken, result.data.id)
+                    }
                 }
             } catch (e) {
                 $.logErr(e, resp);
@@ -120,7 +153,7 @@ function receiveScore(dwqToken, id, score) {
         }).then(async res => {
             let rep = res.data;
             if (rep.state == "success") {
-                scoreAmount += score;
+                scoreAmount += parseFloat(score);
                 console.log(`这个气泡领取到${score}积分,此次运行共计领取到${scoreAmount}积分`)
             }
         }).catch(err => {
@@ -129,8 +162,6 @@ function receiveScore(dwqToken, id, score) {
             resolve()
         })
     })
-
-
 }
 
 
