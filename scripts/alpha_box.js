@@ -3,13 +3,13 @@ const axios = require('axios');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const USER_AGENTS = [
     "Mozilla/5.0 (iPhone; CPU iPhone OS 15_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148[jhsggiusfguiys784i4s763yggfyustfwgyu2768fevuyer,1.0]",
-    "Mozilla/4.0 (iPhone; CPU iPhone OS 14_4_1 like Mac OS X) AppleWebKit/404.1.15 (KHTML, like Gecko) Mobile/13",
     "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3_1 like Mac OS X) AppleWebKit/301.1.15 (KHTML, like Gecko) Mobile/142",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 15_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148[jhsggiusfguiys784i4s763yggfyustfwgyu2768fevuyer,1.0]"
 ]
 let CookieAlphas = [
 ]
 //通知推送资产一天的时间段
-let notifyHours = [6, 12, 18, 23]
+let notifyHours = [6, 9, 12, 15, 18, 20, 22]
 
 // 判断环境变量里面是否有alpha ck
 if (process.env.ALPHA_COOKIE) {
@@ -24,17 +24,13 @@ if (process.env.ALPHA_COOKIE) {
 CookieAlphas = [...new Set(CookieAlphas.filter(item => !!item))]
 console.log(`\n====================共${CookieAlphas.length}个AlphaCookie=========\n`);
 let baseUrl = "https://minealpha.net/api/user/"
+let baseUrlRoot = "https://minealpha.net/"
 !(async () => {
     if (typeof $request !== "undefined") {
         fxck()
     } else {
         for (let i = 0; i < CookieAlphas.length; i++) {
-            //开始打开宝箱
-            await openBox(CookieAlphas[i]);
-            let s = rand(2000, 4000)
-            await $.wait(s)
-            //开始领取奖励
-            await receiveReReward(CookieAlphas[i]);
+            await getCurUserInfo(CookieAlphas[i]);
         }
     }
 })()
@@ -60,7 +56,7 @@ function rand(min, max) {
 
 
 
-function getCurUserInfo(alphack, rewardRate) {
+function getCurUserInfo(alphack) {
     return new Promise((resolve) => {
         let url = {
             url: `${baseUrl}currentUser`,
@@ -72,26 +68,17 @@ function getCurUserInfo(alphack, rewardRate) {
             try {
                 let result = JSON.parse(data);
                 if (result.Succeeded == true) {
-                    $.log("个人信息:" + JSON.stringify(result.User));
+                    $.log("账户信息:" + JSON.stringify(result.User));
                     var lastStartWorkTime = result.User.StartWorkTimestamp;
                     if (lastStartWorkTime + 24 * 3600 * 1000 <= new Date().getTime()) {
                         //时间超过24h，需要开启新一轮挖矿
                         await startNewRoundWork(result.User, alphack)
                     } else {
                         $.log(result.User.Username + "时间不足24h,暂不开启新一轮挖矿")
-                    }
-                    let hour = new Date().getHours();
-                    if ($.isNode() && notifyHours.indexOf(hour) > -1) {
-                        let balance = result.User.Balance
-                        var digNum = result.User.NumberOfSessionsCompleted
-                        var lootBoxBalance = result.User.LootboxBalance
-                        var userRate = result.UserRate
-                        await notify.sendNotify($.name, result.User.Username + '\n领取奖励结果:' + rewardRate + '\n当前总挖矿速率:' + userRate + '\n已完成挖矿次数:' + digNum + '\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产:' + balance);
-                    } else {
-                        $.log("当前时间是:" + hour + "，不推送资产信息！");
+                        await openBox(alphack);
                     }
                 } else {
-                    await notify.sendNotify($.name, "获取用户信息失败疑似COOKIE失效，请重新配置尝试！");
+                    await notify.sendNotify($.name, "COOKIE失效，请重新配置！");
                 }
             } catch (e) {
                 $.logErr(e, resp);
@@ -118,6 +105,7 @@ function startNewRoundWork(user, alphack) {
             if (result.Succeeded == true) {
                 if ($.isNode()) {
                     notify.sendNotify($.name, user.Username + '开启新一轮挖矿成功');
+                    openBox(alphack);
                 }
             } else {
                 $.log("开启新一轮挖矿失败:" + JSON.stringify(result));
@@ -143,11 +131,12 @@ function openBox(alphack) {
             try {
                 let result = JSON.parse(data);
                 if (result.Succeeded == true) {
-                    $.log("获得奖励:" + result.RewardText)
+                    $.log(`发现新的待领取宝箱:${data}`);
+                    await $.wait(rand(12000, 16000));
+                    await getAdReward(alphack, result);
                 } else {
-                    $.log("开启宝箱失败!")
+                    $.log("暂无待开启宝箱奖励");
                 }
-
             } catch (e) {
                 $.logErr(e, resp);
             } finally {
@@ -156,6 +145,43 @@ function openBox(alphack) {
         }, 0)
     })
 }
+
+
+function getAdReward(alphack, result) {
+    return new Promise((resolve) => {
+        let url = {
+            url: `${baseUrl}adWatched`,
+            headers: {
+                "Cookie": alphack
+            }
+        }
+        $.get(url, async (err, resp, data) => {
+            try {
+                let res = JSON.parse(data);
+                if (res.Succeeded == true) {
+                    let hour = new Date().getHours();
+                    if ($.isNode() && notifyHours.indexOf(hour) > -1) {
+                        let balance = result.User.Balance
+                        var digNum = result.User.NumberOfSessionsCompleted
+                        var lootBoxBalance = result.User.LootboxBalance
+                        var userRate = result.UserRate
+                        await notify.sendNotify($.name, result.User.Username + '\n领取奖励结果:' + res.RewardText + '\n当前总挖矿速率:' + userRate + '\n已完成挖矿次数:' + digNum + '\n累计幸运盒子资产:' + lootBoxBalance + '\n当前总资产:' + balance);
+                    } else {
+                        $.log('领取到看广告奖励:' + res.RewardText + "\n当前时间是:" + hour + "，不推送资产信息！");
+                    }
+                } else {
+                    $.log("未获取到看广告后奖励")
+                }
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve()
+            }
+        }, 0)
+    })
+}
+
+
 
 
 function receiveReReward(alphack) {
