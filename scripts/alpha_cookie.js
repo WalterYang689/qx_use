@@ -3,7 +3,7 @@ $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
-  if ($request.url.indexOf('/api/BlockchainExplorer/GetTransactionsForSenderCount') > -1) {
+  if ($request.url.indexOf('api/BlockchainExplorer/GetTransactionsForReceiver') > -1) {
     const cookie = $request.headers.Cookie;
     $.log("当前账户cookie:\n"+cookie);
     if (cookie){
