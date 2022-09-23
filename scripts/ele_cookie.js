@@ -7,7 +7,7 @@ function GetCookie() {
     const cookie = $request.headers.Cookie;
     $.log("当前账户cookie:\n"+cookie);
     if (cookie){
-       $.notify('饿了么','CK获取成功','已经复制到粘贴板啦',{'update-pasteboard':cookie});
+       $.notify('饿了么','CK获取成功','点击通知自动复制CK',{'update-pasteboard':cookie});
     }
   }
   $.done();
