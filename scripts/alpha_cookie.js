@@ -7,7 +7,7 @@ function GetCookie() {
     const cookie = $request.headers.Cookie;
     $.log("当前账户cookie:\n"+cookie);
     if (cookie){
-      $.notify('Alpha','CK获取成功');
+    $.notify('Alpha','CK获取成功','',{'update-pasteboard':cookie});
     }
   }
   $.done();
