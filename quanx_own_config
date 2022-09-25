@@ -55,7 +55,7 @@ static=Weibo, direct, 国际网络（自动选择节点）, img-url=https://raw.
 url-latency-benchmark=spotify, server-tag-regex=美国|us, check-interval=600, tolerance=0, img-url=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
 
 [server_remote]
-https://api2.wangzi.uk/sub?target=ss&url=https%3A//wangzi.uk/link/715ft8gWoeapexoF%3Fmu%3D3, tag=呆萌价, update-interval=172800, opt-parser=false, enabled=true
+
 
 [filter_remote]
 https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/QuantumultX/AppStore/AppStore.list, tag=App store, update-interval=172800, opt-parser=false, enabled=true
