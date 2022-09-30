@@ -4,10 +4,14 @@ if ($request) GetCookie();
 
 function GetCookie() {
   if ($request.url.indexOf('personal.queryorderlist') > -1) {
-    const cookie = $request.headers.Cookie;
-    $.log("当前账户cookie:\n"+cookie);
-    if (cookie){
-       $.notify('饿了么','CK获取成功','点击通知自动复制CK',{'update-pasteboard':cookie});
+    const CV = $request.headers.Cookie;
+       if (CV.match(/(SID=.+?cookie2=|cookie2=.+?SID=)/)) {
+        var CookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/);
+       $.log("当前账户提取:\n"+CookieValue);
+      }
+      $.log("当前账户cookie:\n"+CV);
+    if (CV){
+       $.notify('饿了么','CK获取成功','点击通知自动复制CK',{'update-pasteboard':CV});
     }
   }
   $.done();
