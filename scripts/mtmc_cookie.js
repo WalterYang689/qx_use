@@ -4,7 +4,7 @@ if ($request) GetCookie();
 
 function GetCookie() {
   if ($request.url.indexOf('fruit/waterTreeV2') > -1) {
-    const cookie = $request.headers.Cookie;
+    const cookie = $request.headers.t;
     $.log("当前账户cookie:\n"+cookie);
     if (cookie){
        $.notify('美团果园','CK获取成功','点击通知自动复制CK',{'update-pasteboard':cookie});
