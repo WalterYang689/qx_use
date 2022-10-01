@@ -4,7 +4,7 @@ if ($request) GetCookie();
 
 function GetCookie() {
     if ($request.url.indexOf('personal.queryorderlist') > -1) {
-        var CV = $request.headers["Cookie"] || $request.headers["cookie"];
+        var CV = $request.headers.Cookie || $request.headers.cookie;
         $.log("测试:\n" + CV);
         if (CV.match(/(SID=.+?cookie2=|cookie2=.+?SID=)/)) {
             var cookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/);
