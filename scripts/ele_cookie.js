@@ -3,7 +3,7 @@ $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
-    if ($request.url.indexOf('h5/mtop.alsc.personal.queryorderlist') > -1) {
+    if ($request.url.indexOf('personal.queryorderlist') > -1) {
         var CV = $request.headers.Cookie
         if (CV.match(/(SID=.+?cookie2=|cookie2=.+?SID=)/)) {
             var cookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/);
