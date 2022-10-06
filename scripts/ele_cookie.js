@@ -5,6 +5,7 @@ if ($request) GetCookie();
 function GetCookie() {
     if ($request.url.indexOf('personal.queryorderlist') > -1) {
         var CV = $request.headers.Cookie
+        $.log("当前账户cookie:\n" + CV)
         if (CV.match(/(SID=.+?cookie2=|cookie2=.+?SID=)/)) {
             var cookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/);
             $.log("当前账户cookie提取内容:\n" + cookieValue);
