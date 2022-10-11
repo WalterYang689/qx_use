@@ -3,16 +3,15 @@ $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
-    if ($request.url.indexOf('personal.queryorderlist') > -1) {
+    if ($request.url.indexOf('bean-records') > -1) {
         var CV = $request.headers.Cookie
-        $.log("当前账户cookie:\n" + CV)
         if (CV.match(/(SID=.+?cookie2=|cookie2=.+?SID=)/)) {
             var cookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/);
             $.log("当前账户cookie提取内容:\n" + cookieValue);
             if (cookieValue) {
                 $.notify('饿了么', 'CK获取成功', '点击通知自动复制CK', { 'update-pasteboard': cookieValue });
             }
-        }
+        } 
         $.log("当前账户完整cookie:\n" + CV);
 
     }
