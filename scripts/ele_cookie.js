@@ -11,6 +11,7 @@ function GetCookie() {
                 $.notify('饿了么', 'CK获取成功', '点击通知自动复制CK', { 'update-pasteboard': cookieValue });
             }
         $.log("当前账户完整cookie:\n" + CV);
+        $.write("elmck",CV);
 
     }
     $.done();
