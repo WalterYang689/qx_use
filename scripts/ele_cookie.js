@@ -5,14 +5,11 @@ if ($request) GetCookie();
 function GetCookie() {
     if ($request.url.indexOf('bean-records') > -1) {
         var CV = $request.headers.Cookie
-         var cookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/)+CV.match(/_m_h5_tk=.+?;/)+CV.match(/_m_h5_tk_enc=.+?;/);
-            $.log("当前账户cookie提取内容:\n" + cookieValue);
-            if (cookieValue) {
-                $.notify('饿了么', 'CK获取成功', '点击通知自动复制CK', { 'update-pasteboard': cookieValue });
-            }
+        var cookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/);
+        if (cookieValue) {
+          $.notify('饿了么', 'CK获取成功', '点击通知自动复制CK', { 'update-pasteboard': cookieValue });
+        }
         $.log("当前账户完整cookie:\n" + CV);
-        $.write("elmck",CV);
-
     }
     $.done();
 }
