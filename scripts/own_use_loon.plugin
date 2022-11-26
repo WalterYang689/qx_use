@@ -13,11 +13,8 @@ http-request https:\/\/tb\.ele\.me\/wow\/z\/ele-market\/default\/bean-records sc
 http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/alpha_cookie.js
 
 #打开支付宝 搜索淘宝-订单-随便点击一个订单进入
-http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.smb url script-request-header https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/taobao_cookie.js
-
-#茄皇
-http://api.xiaoyisz.com/qiehuang/ga/public/api/login script-path=https://raw.githubusercontent.com/LinYuanovo/scripts/main/tyqh.js
+http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.smb script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/taobao_cookie.js
 
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,api.xiaoyisz.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com
