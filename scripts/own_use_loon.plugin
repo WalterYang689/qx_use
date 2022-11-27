@@ -6,13 +6,13 @@
 
 [Script]
 
-#饿了么App-我的-吃货豆-吃货豆记录
+#获取饿了么AppCK 饿了么App-我的-吃货豆-吃货豆记录
 http-request https:\/\/tb\.ele\.me\/wow\/z\/ele-market\/default\/bean-records script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/ele_cookie.js
 
-#打开Alpha App-钱包-收到
+#获取AlphaCK 打开Alpha App-钱包-收到
 http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/alpha_cookie.js
 
-#打开支付宝 搜索淘宝-订单-随便点击一个订单进入
+#获取淘宝H5CK 打开支付宝 搜索淘宝-订单-随便点击一个订单进入
 http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.smb script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/taobao_cookie.js
 
 
