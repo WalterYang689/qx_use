@@ -23,4 +23,4 @@ http-response ^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBu
 
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,www.52pojie.cn
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,www.52pojie.cn,api.m.jd.com
