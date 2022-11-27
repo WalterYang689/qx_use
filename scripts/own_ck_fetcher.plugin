@@ -15,6 +15,13 @@ http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubuserc
 #获取淘宝H5CK 打开支付宝 搜索淘宝-订单-随便点击一个订单进入
 http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.smb script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/taobao_cookie.js tag=TaobaoH5CK
 
+#获取吾爱破解H5CK 网页登录吾爱破解个人账户
+http-request https:\/\/www\.52pojie\.cn\/home\.php\? script-path=https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, timeout=10, enabled=false, tag=吾爱破解CK, img-url=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/task/52pj.png
+
+#Tasks
+cron "20 6 * * *" script-path=https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, tag=吾爱破解, img-url=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/task/52pj.png
+
+
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,www.52pojie.cn
