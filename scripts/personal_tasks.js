@@ -1,0 +1,1 @@
+cron "20 6 * * *" script-path=https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, tag=吾爱破解, img-url=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/task/52pj.png
