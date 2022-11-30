@@ -18,9 +18,9 @@ http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.sm
 #获取吾爱破解H5CK 网页登录吾爱破解个人账户
 http-request https:\/\/www\.52pojie\.cn\/home\.php\? script-path=https://raw.githubusercontent.com/NobyDa/Script/master/52pojie-DailyBonus/52pojie.js, img-url=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/task/52pj.png, tag=52PJCK
 
-#京东比价
-http-response ^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/jdjf_price.js, requires-body=true, tag=JDPrice, img-url=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/task/jd.png
+#京东比价api.m.jd.com
+#http-response ^https?://api\.m\.jd\.com/(client\.action|api)\?functionId=(wareBusiness|serverConfig|basicConfig|lite_wareBusiness|pingou_item) script-path=https://raw.githubusercontent.com/Tartarus2014/Script/master/jdjf_price.js, requires-body=true, tag=JDPrice, img-url=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/icon/task/jd.png
 
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,www.52pojie.cn,api.m.jd.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,www.52pojie.cn
