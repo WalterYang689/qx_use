@@ -1,13 +1,14 @@
-const APIKey = 'mtmc';
+const APIKey = 'mtmc_fruit';
 $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
-  if ($request.url.indexOf('fruit/waterTreeV2') > -1) {
-    const cookie = $request.headers.t;
-    $.log("当前账户cookie:\n"+cookie);
+  if ($request.url.indexOf('game/fruit/waterTreeV2') > -1) {
+    $.log("美团买菜果园完整数据:\n"+$request.headers);
+    const cookie = ($request.headers)['t'];
+    $.log("美团买菜果园请求头T:\n"+cookie);
     if (cookie){
-       $.notify('美团果园','CK获取成功','点击通知自动复制CK',{'update-pasteboard':cookie});
+    $.notify('Alpha','请求T获取成功','点击通知自动复制',{'update-pasteboard':cookie});
     }
   }
   $.done();
