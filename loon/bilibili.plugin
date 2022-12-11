@@ -1,4 +1,7 @@
-
+#!name= Bilibili Blocker
+#!desc= B站全家桶
+#!author= HiYoung
+#!homepage= https://github.com/WalterYang689
 
 [Script]
 http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true
