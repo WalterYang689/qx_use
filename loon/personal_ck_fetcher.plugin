@@ -15,5 +15,9 @@ http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubuserc
 #获取淘宝H5CK 打开支付宝 搜索淘宝-订单-随便点击一个订单进入
 http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.smb script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/taobao_cookie.js,tag=TaobaoH5CK
 
+# ～ BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)@ddgksf2013 
+http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=Bili1080p
+
+
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,app.bilibili.com
