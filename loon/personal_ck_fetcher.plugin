@@ -22,9 +22,5 @@ http-request ^https?:\/\/m.bilibili.com/$ script-path=https://raw.githubusercont
 #美团买菜_签到任务AppCK @blackmatrix7
 http-request ^https?:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/checkIn\/getWeekCheckInProgressBar\? requires-body=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/meituan/maicai_checkin.js,tag=MTMCAppCK
 
-#BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)@ddgksf2013 
-http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=Bili1080p
-
-
 [MITM]
 hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,app.bilibili.com,m.bilibili.com,mall.meituan.com
