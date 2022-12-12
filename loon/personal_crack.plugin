@@ -4,9 +4,16 @@
 #!homepage= https://github.com/WalterYang689/
 #!icon= https://lh3.googleusercontent.com/a-/AOh14GhsfWTsO-rwr0yvvnB8y7S7SwwRlH3g6JH4JqMb=s96-c
 
+[Rewrite]
+#555横幅广告
+^https:\/\/vip7\.fzwdyy\.cn:8083\/api\/(getAdvertInfo|getGOOGAdvert) - reject
+^https:\/\/vpic\.cms\.qq\.com\/nj_vpic - reject
+
+
 [Script]
 #BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)@ddgksf2013 
 http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=Bili1080p
 
+
 [MITM]
-hostname = app.bilibili.com
+hostname = app.bilibili.com,vip7.fzwdyy.cn,vpic.cms.qq.com
