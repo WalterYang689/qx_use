@@ -18,6 +18,10 @@ http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.sm
 # ～ BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)@ddgksf2013 
 http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=Bili1080p
 
+#BiliBili_哔哩哔哩_任务获取ck
+http-request ^https?:\/\/app\.bilibili\.com\/x\/resource\/domain\? script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js, tag=BiliCK_App
+
+http-request ^https?:\/\/m.bilibili.com/$ script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js, tag=BiliCK_Web
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,app.bilibili.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,app.bilibili.m.bilibili.com,
