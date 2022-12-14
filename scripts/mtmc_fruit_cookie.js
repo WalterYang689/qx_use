@@ -5,9 +5,9 @@ if ($request) GetCookie();
 function GetCookie() {
   if ($request.url.indexOf('game/fruit/getView') > -1) {
     const cookie = ($request.headers)['t'];
-    $.log("美团买菜果园请求头T:\n"+cookie);
+    $.log("美团买菜-果园请求头T:\n"+cookie);
     if (cookie){
-    $.notify('Alpha','请求T获取成功','点击通知自动复制',{'update-pasteboard':cookie});
+    $.notify('美团买菜-果园','请求数据T获取成功','点击通知自动复制',{'update-pasteboard':cookie});
     }
   }
   $.done();
