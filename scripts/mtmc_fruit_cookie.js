@@ -3,8 +3,7 @@ $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
-  if ($request.url.indexOf('game/fruit/waterTreeV2') > -1) {
-    $.log("美团买菜果园完整数据:\n"+$request.headers);
+  if ($request.url.indexOf('game/fruit/getView') > -1) {
     const cookie = ($request.headers)['t'];
     $.log("美团买菜果园请求头T:\n"+cookie);
     if (cookie){
