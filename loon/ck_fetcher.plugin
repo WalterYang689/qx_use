@@ -15,10 +15,6 @@ http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubuserc
 #获取淘宝H5CK 打开支付宝 搜索淘宝-订单-随便点击一个订单进入
 http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.smb script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/taobao_cookie.js,tag=TaobaoH5CK
 
-#BiliBili_哔哩哔哩_任务获取CK
-http-request ^https?:\/\/app\.bilibili\.com\/x\/resource\/domain\? script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js, tag=BiliCK_App
-http-request ^https?:\/\/m.bilibili.com/$ script-path=https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/Task/BiliBili.js, tag=BiliCK_Web
-
 #美团买菜_签到任务AppCK @blackmatrix7
 http-request ^https?:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/checkIn\/getWeekCheckInProgressBar\? requires-body=0,script-path=https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/script/meituan/maicai_checkin.js,tag=MTMCAppCK
 
@@ -27,4 +23,4 @@ http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-
 
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,app.bilibili.com,m.bilibili.com,mall.meituan.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com
