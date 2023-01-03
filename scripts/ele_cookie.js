@@ -5,7 +5,7 @@ if ($request) GetCookie();
 function GetCookie() {
     if ($request.url.indexOf('bean-records') > -1) {
         var CV = $request.headers.Cookie
-        var cookieValue = CV.match(/SID=.+?;/) + CV.match(/cookie2=.+?;/);
+        var cookieValue = CV.match(/SID=.+?;/) + CV.match(/USERID=.+?;/)+CV.match(/_tb_token_=.+?;/)+CV.match(/cookie2=.+?;/);
         if (cookieValue) {
           $.log("当前账户提取cookie:\n" + cookieValue);
           $.notify('饿了么', 'CK获取成功', '点击通知自动复制CK', { 'update-pasteboard': cookieValue });
