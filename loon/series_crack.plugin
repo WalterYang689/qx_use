@@ -31,7 +31,8 @@ http-response ^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=htt
 
 http-response ^https:\/\/api\.sortedapp\.com\/receipts\/verify requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Sorted.js, tag=SortedVIP
 
+http-response ^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$ requires-body=1,script-path=https://raw.githubusercontent.com/iEwha/Profiles/master/Script/baimiao.js, tag=白描VIP
 
 
 [MITM]
-hostname = app.bilibili.com,vip7.fzwdyy.cn,vpic.cms.qq.com,biz.caiyunapp.com,pan.baidu.com,account.wps.cn,*.docer.wps.cn,vipapi.wps.cn,*.kuwo.cn, *.lrts.me,buy.itunes.apple.com,api.sortedapp.com
+hostname = app.bilibili.com,vip7.fzwdyy.cn,vpic.cms.qq.com,biz.caiyunapp.com,pan.baidu.com,account.wps.cn,*.docer.wps.cn,vipapi.wps.cn,*.kuwo.cn, *.lrts.me,buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
