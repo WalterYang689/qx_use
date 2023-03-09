@@ -15,7 +15,7 @@
 #BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)@ddgksf2013 
 http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=Bili1080p
 
-http-response https?:\/\/biz\.caiyunapp\.com\/(membership_rights|v2\/user) script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/ColorfulClouds_SVIP.js, requires-body=true, timeout=60, tag=彩云天气SVIP, enable = true
+http-response ^http[s]?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/v2\/user.*$ script-path=https://raw.githubusercontent.com/WeiRen0/Scripts/main/cytq.js, requires-body=true, timeout=60, tag=彩云天气SVIP, enable = true
 
 http-response https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/BaiduCloud.js, requires-body=true, timeout=60, tag=百度网盘SVIP, enable = true
 
@@ -35,4 +35,4 @@ http-response ^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$
 
 
 [MITM]
-hostname = app.bilibili.com,vip7.fzwdyy.cn,vpic.cms.qq.com,biz.caiyunapp.com,pan.baidu.com,account.wps.cn,*.docer.wps.cn,vipapi.wps.cn,*.kuwo.cn, *.lrts.me,buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
+hostname = app.bilibili.com,vip7.fzwdyy.cn,vpic.cms.qq.com, *.caiyunapp.*,*cyapi*,pan.baidu.com,account.wps.cn,*.docer.wps.cn,vipapi.wps.cn,*.kuwo.cn, *.lrts.me,buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
