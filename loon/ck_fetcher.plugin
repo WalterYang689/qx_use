@@ -18,7 +18,5 @@ http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.sm
 #美团买菜-果园 AppCK
 http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,tag=MTMCFruitCK
 
-#阿里云盘
-http-response ^https:\/\/auth\.aliyundrive.com\/v2\/account\/token script-path=https://raw.githubusercontent.com/lowking/Scripts/master/ali/aliYunPanCheckIn.js, requires-body=true, timeout=10, tag=阿里云盘签到cookie, img-url=https://raw.githubusercontent.com/lowking/Scripts/master/doc/icon/aliYunPan.png
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,auth.aliyundrive.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com
