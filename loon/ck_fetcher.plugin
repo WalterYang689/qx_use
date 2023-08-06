@@ -24,6 +24,9 @@ http-request https:\/\/m5.amap.com\/ws\/alice\/activity\/daily_sign\/do_sign scr
 #建行生活签到 AppCK
 http-request https:\/\/yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode=A3341A040 script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jhsh_checkIn.js,tag=ccbSignCK
 
+#微信小程序-特仑苏官方商城日常签到领积分 WXCK
+http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/tls.js, timeout=10, tag=tlsWxCK
+
 [MITM]
 hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com
 
