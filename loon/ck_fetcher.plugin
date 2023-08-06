@@ -18,5 +18,8 @@ http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.sm
 #美团买菜-果园 AppCK
 http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,tag=MTMCFruitCK
 
+#高德地图-打车-福利中心 AppCK
+http-request https://m5.amap.com/ws/alice/activity/daily_sign/do_sign  script-path=https://raw.githubusercontent.com/Crazy-Z7/Task/main/GDTu.js
+
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com
