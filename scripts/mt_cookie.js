@@ -3,7 +3,7 @@ $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
-  if ($request.url.indexOf('hlx.meituan.com') > -1) {
+  if ($request.url.indexOf('meituan.com') > -1) {
        var CV = $request.headers.Cookie
         var cookieValue = CV.match(/token=.+?;/);
         if (cookieValue) {
