@@ -19,7 +19,7 @@ http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.sm
 http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,tag=MTMCFruitCK
 
 #美团 AppCK
-http-request https:\/\/lx0\.meituan\.com\ script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mt_cookie.js,tag=MeituanCK
+http-request https:\/\/lx0\.meituan\.com script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mt_cookie.js,tag=MeituanCK
 
 
 #高德地图-打车-福利中心 AppCK
