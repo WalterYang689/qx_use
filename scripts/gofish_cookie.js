@@ -3,11 +3,11 @@ $ = new API(APIKey, true);
 if ($request) GetCookie();
 
 function GetCookie() {
-  if ($request.url.indexOf('lx0.meituan.com') > -1) {
+  if ($request.url.indexOf('coin/pages/coinRecord') > -1) {
        var CV = $request.headers.Cookie
         var cookieValue = CV.match(/cookie2=.+?;/);
         if (cookieValue) {
-          $.log("当前账户提取cookie:\n" + cookieValue);
+          $.log("当前账户提取cookie2=" + cookieValue);
           $.notify('闲鱼', '闲鱼币任务CK获取成功', '点击通知自动复制CK', { 'update-pasteboard': cookieValue });
         }
         $.log("当前账户完整cookie:\n" + CV);
