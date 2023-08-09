@@ -21,6 +21,8 @@ http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-
 #美团 AppCK
 http-request https:\/\/lx0\.meituan\.com script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mt_cookie.js,tag=MeituanCK
 
+#闲鱼币 AppCK
+http-request https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/coin\/pages\/coinRecord script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/gofish_cookie.js,tag=GoFishCK
 
 #高德地图-打车-福利中心 AppCK
 http-request https:\/\/m5.amap.com\/ws\/alice\/activity\/daily_sign\/do_sign script-path=https://raw.githubusercontent.com/Crazy-Z7/Task/main/GDTu.js,tag=GDMapCK
@@ -32,5 +34,5 @@ http-request https:\/\/yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode=A3341A0
 http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/tls.js, timeout=10, tag=tlsWxCK
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com,mall.telunsu.net,lx0.meituan.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com
 
