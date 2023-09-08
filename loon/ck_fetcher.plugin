@@ -33,6 +33,8 @@ http-request https:\/\/yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode=A3341A0
 #微信小程序-特仑苏官方商城日常签到领积分 WXCK
 http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/tls.js, timeout=10, tag=tlsWxCK
 
+#微信小程序-喜茶
+http-request ^https:\/\/vip.heytea.com\/api\/service-member\/vip\/task\/member script-path=https://raw.githubusercontent.com/Sliverkiss/GoodNight/master/Script/heytea.js, timeout=10, tag=HeyTeaToken
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,vip.heytea.com
 
