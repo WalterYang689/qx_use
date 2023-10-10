@@ -35,6 +35,9 @@ http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ scrip
 
 #微信小程序-喜茶
 http-request ^https:\/\/vip.heytea.com\/api\/service-member\/vip\/task\/member script-path=https://raw.githubusercontent.com/Sliverkiss/GoodNight/master/Script/heytea.js, timeout=10, tag=HeyTeaToken
+
+#i茅台
+http-request ^https:\/\/app\.moutai519\.com\.cn\/xhr\/front\/mall\/message\/unRead\/query script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/i-maotai.js,tag=IMaotaiToken
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,vip.heytea.com
+hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,vip.heytea.com,app.moutai519.com.cn
 
