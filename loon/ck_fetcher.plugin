@@ -7,37 +7,29 @@
 [Script]
 
 #获取饿了么AppCK 饿了么App-我的-吃货豆-吃货豆记录
-http-request https:\/\/tb\.ele\.me\/wow\/z\/ele-market\/default\/bean-records script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/ele_cookie.js,tag=ElemAppCK
+http-request https:\/\/tb\.ele\.me\/wow\/z\/ele-market\/default\/bean-records script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/ele_cookie.js,requires-body=true, timeout=10,tag=ElemAppCK
 
 #获取AlphaCK 打开Alpha App-钱包-收到
-http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/alpha_cookie.js,tag=AlphaCK
-
-#获取淘宝H5CK 打开支付宝 搜索淘宝-订单-随便点击一个订单进入
-http-request https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.baichuan\.smb script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/taobao_cookie.js,tag=TaobaoH5CK
+http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/alpha_cookie.js,requires-body=true, timeout=10,tag=AlphaCK
 
 #美团买菜-果园 AppCK
-http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,tag=MTMCFruitCK
+http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,requires-body=true, timeout=10,tag=MTMCFruitCK
 
 #美团 AppCK
-http-request https:\/\/lx0\.meituan\.com script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mt_cookie.js,tag=MeituanCK
+http-request https:\/\/lx0\.meituan\.com script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mt_cookie.js,requires-body=true, timeout=10,tag=MeituanCK
 
 #闲鱼币 AppCK
-http-request https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/coin\/pages\/coinRecord script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/gofish_cookie.js,tag=GoFishCK
-
-#高德地图-打车-福利中心 AppCK
-http-request https:\/\/m5.amap.com\/ws\/alice\/activity\/daily_sign\/do_sign script-path=https://raw.githubusercontent.com/Crazy-Z7/Task/main/GDTu.js,tag=GDMapCK
-
-#建行生活签到 AppCK
-http-request https:\/\/yunbusiness\.ccb\.com\/clp_coupon\/txCtrl\?txcode=A3341A040 script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jhsh_checkIn.js,tag=ccbSignCK
+http-request https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/coin\/pages\/coinRecord script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/gofish_cookie.js,requires-body=true, timeout=10,tag=GoFishCK
 
 #微信小程序-特仑苏官方商城日常签到领积分 WXCK
-http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/tls.js, timeout=10, tag=tlsWxCK
-
-#微信小程序-喜茶
-http-request ^https:\/\/vip.heytea.com\/api\/service-member\/vip\/task\/member script-path=https://raw.githubusercontent.com/Sliverkiss/GoodNight/master/Script/heytea.js, timeout=10, tag=HeyTeaToken
+http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/tls.js, requires-body=true, timeout=10, tag=tlsWxCK
 
 #i茅台
-http-request ^https:\/\/app\.moutai519\.com\.cn\/xhr\/front\/mall\/message\/unRead\/query script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/i-maotai.js,tag=IMaotaiToken
+#http-request ^https:\/\/app\.moutai519\.com\.cn\/xhr\/front\/mall\/message\/unRead\/query script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/i-maotai.js,requires-body=true, timeout=10,tag=IMaotaiToken
+
+#阿里云盘 AppCK
+http-request ^https:\/\/(auth|aliyundrive)\.alipan\.com\/v2\/account\/token script-path=https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/Mine/aDriveCheckIn/aDriveCheckIn.js, requires-body=true, timeout=10, tag=AliDriveCK
+
 [MITM]
-hostname = tb.ele.me,minealpha.net,guide-acs.m.taobao.com,mall.meituan.com,m5.amap.com,yunbusiness.ccb.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,vip.heytea.com,app.moutai519.com.cn
+hostname = tb.ele.me,minealpha.net,mall.meituan.com,m5.amap.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,app.moutai519.com.cn,auth.alipan.com,auth.aliyundrive.com
 
