@@ -30,9 +30,10 @@ http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ scrip
 #阿里云盘 AppCK
 http-request ^https:\/\/(auth|aliyundrive)\.alipan\.com\/v2\/account\/token script-path=https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/Mine/aDriveCheckIn/aDriveCheckIn.js, requires-body=true, timeout=10, tag=AliDriveCK
 
-#达美乐披萨公众号-游戏
-http-request ^https:\/\/game\.dominos\.com\.cn\/gold\/game\/gameDone script-path=https://gist.githubusercontent.com/Sliverkiss/6b4da0d367d13790a9fd1d928c82bdf8/raw/100269fc92d8ed607fd5f105c2c5b32876101ff1/dlm.js,requires-body=true, timeout=10,tag=DmlCK
+#晓晓优选 霸王餐
+http-request ^https:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/my script-path=https://gist.githubusercontent.com/Sliverkiss/991a81be1fc8cf2a1937432be68f5521/raw/xxyx.js
+,requires-body=true, timeout=10,tag=XXYXCK
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,mall.meituan.com,m5.amap.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,app.moutai519.com.cn,auth.alipan.com,auth.aliyundrive.com,game.dominos.com.cn
+hostname = tb.ele.me,minealpha.net,mall.meituan.com,m5.amap.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,app.moutai519.com.cn,auth.alipan.com,auth.aliyundrive.com,xxyx-client-api.xiaoxiaoyouxuan.com
 
