@@ -5,35 +5,18 @@
 #!icon= https://lh3.googleusercontent.com/a-/AOh14GhsfWTsO-rwr0yvvnB8y7S7SwwRlH3g6JH4JqMb=s96-c
 
 [Script]
-
-#获取饿了么AppCK 饿了么App-我的-吃货豆-吃货豆记录
-http-request https:\/\/tb\.ele\.me\/wow\/z\/ele-market\/default\/bean-records script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/ele_cookie.js,requires-body=true, timeout=10,tag=ElemAppCK
-
 #获取AlphaCK 打开Alpha App-钱包-收到
 http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/alpha_cookie.js,requires-body=true, timeout=10,tag=AlphaCK
 
 #美团买菜-果园 AppCK
-http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,requires-body=true, timeout=10,tag=MTMCFruitCK
+#http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,requires-body=true, timeout=10,tag=MTMCFruitCK
 
 #美团 AppCK
 http-request https:\/\/lx0\.meituan\.com script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mt_cookie.js,requires-body=true, timeout=10,tag=MeituanCK
 
-#闲鱼币 AppCK
-http-request https:\/\/h5\.m\.goofish\.com\/wow\/moyu\/moyu-project\/coin\/pages\/coinRecord script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/gofish_cookie.js,requires-body=true, timeout=10,tag=GoFishCK
-
-#微信小程序-特仑苏官方商城日常签到领积分 WXCK
-http-request https:\/\/mall\.telunsu\.net\/wxapi\/rest\/getUser\?openid=.+ script-path=https://raw.githubusercontent.com/Sliverkiss/helloworld/master/Study/tls.js, requires-body=true, timeout=10, tag=tlsWxCK
-
-#i茅台
-#http-request ^https:\/\/app\.moutai519\.com\.cn\/xhr\/front\/mall\/message\/unRead\/query script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/i-maotai.js,requires-body=true, timeout=10,tag=IMaotaiToken
-
-#阿里云盘 AppCK
-http-request ^https:\/\/(auth|aliyundrive)\.alipan\.com\/v2\/account\/token script-path=https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/js/Mine/aDriveCheckIn/aDriveCheckIn.js, requires-body=true, timeout=10, tag=AliDriveCK
-
 #晓晓优选 霸王餐
-http-request ^https:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/my script-path=https://gist.githubusercontent.com/Sliverkiss/991a81be1fc8cf2a1937432be68f5521/raw/xxyx.js
-,requires-body=true, timeout=10,tag=XXYXCK
+http-request ^https:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/my script-path=https://gist.githubusercontent.com/Sliverkiss/991a81be1fc8cf2a1937432be68f5521/raw/xxyx.js,requires-body=true, timeout=10,tag=XXYXCK
 
 [MITM]
-hostname = tb.ele.me,minealpha.net,mall.meituan.com,m5.amap.com,mall.telunsu.net,lx0.meituan.com,h5.m.goofish.com,app.moutai519.com.cn,auth.alipan.com,auth.aliyundrive.com,xxyx-client-api.xiaoxiaoyouxuan.com
+hostname = minealpha.net,mall.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com
 
