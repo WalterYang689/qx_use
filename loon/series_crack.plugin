@@ -23,4 +23,4 @@ http-response ^https:\//aiqicha.baidu.com\/usercenter\/getvipinfoajax requires-b
 
 
 [MITM]
-hostname = buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
+hostname = buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn,aiqicha.baidu.com
