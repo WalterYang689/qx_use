@@ -20,4 +20,4 @@ http-response ^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$
 
 
 [MITM]
-hostname = *.lrts.me,buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
+hostname = buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
