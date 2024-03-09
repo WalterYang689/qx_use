@@ -18,6 +18,9 @@ http-response ^https:\/\/api\.sortedapp\.com\/receipts\/verify requires-body=1,s
 
 http-response ^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$ requires-body=1,script-path=https://raw.githubusercontent.com/iEwha/Profiles/master/Script/baimiao.js, tag=白描VIP
 
+http-response ^https:\//aiqicha.baidu.com\/usercenter\/getvipinfoajax requires-body=1,script-path=https://raw.githubusercontent.com/litieyin/AD_VIP/main/Script/aiqicha.js, tag=爱企查VIP
+
+
 
 [MITM]
 hostname = buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
