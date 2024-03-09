@@ -12,21 +12,6 @@
 
 [Script]
 
-#BiliBili_哔哩哔哩_1080P高码率+4K画质(番剧和影视除外)@ddgksf2013 
-http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? script-path=https://github.com/ddgksf2013/Scripts/raw/master/bilibili_json.js, requires-body=true, tag=Bili1080p
-
-http-response ^http[s]?:\/\/biz\.(caiyunapp|cyapi)\.(com|cn)\/v2\/user.*$ script-path=https://raw.githubusercontent.com/WeiRen0/Scripts/main/cytq.js, requires-body=true, timeout=60, tag=彩云天气SVIP, enable = true
-
-http-response https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/BaiduCloud.js, requires-body=true, timeout=60, tag=百度网盘SVIP, enable = true
-
-http-response ^https?:\/\/account\.wps\.cn\/api\/v3\/mine\/vips script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/WPSDocerVIPuserCrack.js, requires-body=true, timeout=10, tag=WPS稻壳会员
-
-http-request ^https?:\/\/.+\.(docer.)?wps.cn\/(user\/v1\/vip|android\/mb\/buy|download\/v1\/ios|partner\/invoke\/usable|(api|rank)\/v1(\/mobile\/mb)?\/detail) script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/WPSDocerVIPowerCrack.js, requires-body=true, timeout=10, tag=WPS稻壳
-
-http-response ^https?:\/\/account\.wps\.cn\/api\/users script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/Wps.js, requires-body=true, timeout=10, tag=WPSVIP
-
-http-response ^https?:\/\/.*\.(kuwo|lrts)\.(cn|me)\/(a\.p|music\.pay|(vip\/(v2|enc)\/(theme|user\/vip))|(EcomResource|(Mobile)?Ad)Serv(er|ice)).* script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/kuwovip.js,requires-body=true, timeout=10, tag=酷我SVIP
-
 http-response ^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt script-path=https://raw.githubusercontent.com/Cydia8888/loon_config/master/js/Picsew.js, requires-body=true, timeout=10, tag=PicsewVIP
 
 http-response ^https:\/\/api\.sortedapp\.com\/receipts\/verify requires-body=1,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/Sorted.js, tag=SortedVIP
@@ -35,4 +20,4 @@ http-response ^https?:\/\/baimiao\.uzero\.cn\/api\/v\d\.user\/appLaunchWithUser$
 
 
 [MITM]
-hostname = app.bilibili.com,vip7.fzwdyy.cn,vpic.cms.qq.com, *.caiyunapp.*,*cyapi*,pan.baidu.com,account.wps.cn,*.docer.wps.cn,vipapi.wps.cn,*.kuwo.cn, *.lrts.me,buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
+hostname = *.lrts.me,buy.itunes.apple.com,api.sortedapp.com,baimiao.uzero.cn
