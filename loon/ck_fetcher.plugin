@@ -41,8 +41,7 @@ http-request ^https\:\/\/ios\.songshuyouxi\.com\/user script-path=https://raw.gi
 http-response ^https:\/\/(m5(|-zb)|dache)\.amap\.com\/(ws\/yuece\/(act|openapi\/activity\/current)\/query|common\/(alipaymini|wxmini)\?_ENCRYPT=) script-path=https://raw.githubusercontent.com/wf021325/qx/master/task/ampDache.js, requires-body=true, timeout=60, tag=AmpDacheCK
 
 #国网电费
-http-request ^https?:\/\/osg-open\.sgcc\.com\.cn\/osg-open-p0001\/member\/c5\/f05 script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/95598/95598.js, timeout=60,tag=GWDFOpenID
-
+http-request ^https?:\/\/osg-open\.sgcc\.com\.cn\/osg-open-p0001\/member\/c5\/f05 script-path=https://raw.githubusercontent.com/Yuheng0101/X/main/Tasks/95598/95598.weapp.js,timeout=60,tag=GWDFOpenID
 [MITM]
 hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com, m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com,osg-open.sgcc.com.cn
 
