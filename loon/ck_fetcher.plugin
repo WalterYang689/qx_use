@@ -40,6 +40,9 @@ http-request ^https\:\/\/ios\.songshuyouxi\.com\/user script-path=https://raw.gi
 # 高德地图-福利中心签到
 http-response ^https:\/\/(m5(|-zb)|dache)\.amap\.com\/(ws\/yuece\/(act|openapi\/activity\/current)\/query|common\/(alipaymini|wxmini)\?_ENCRYPT=) script-path=https://raw.githubusercontent.com/wf021325/qx/master/task/ampDache.js, requires-body=true, timeout=60, tag=AmpDacheCK
 
+#蜜雪冰城小程序
+http-response ^https:\/\/mxsa\.mxbc\.net\/api\/v1\/customer\/info script-path=https://gist.githubusercontent.com/Sliverkiss/865c82e42a5730bb696f6700ebb94cee/raw/mxbc.js, requires-body=true, timeout=60, tag=MXBCCK
+
 [MITM]
-hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com, m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com
+hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com, m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com,mxsa.mxbc.net
 
