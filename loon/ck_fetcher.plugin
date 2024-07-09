@@ -57,6 +57,4 @@ http-response https:\/\/payapp\.weixin\.qq\.com\/(coupon-center-user\/home\/logi
 
 
 [MITM]
-hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com,
-m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com,mxsa.mxbc.net,
-www.wandawic.com,mcs-mimp-web.sf-express.com,gw.xiaocantech.com,payapp.weixin.qq.com
+hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com,m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com,mxsa.mxbc.net,www.wandawic.com,mcs-mimp-web.sf-express.com,gw.xiaocantech.com,payapp.weixin.qq.com
