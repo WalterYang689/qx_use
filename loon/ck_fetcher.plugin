@@ -55,6 +55,8 @@ http-response ^https?:\/\/www\.wandawic\.com\/api\/foreground\/loginregister\/qu
 #微信支付分
 http-response https:\/\/payapp\.weixin\.qq\.com\/(coupon-center-user\/home\/login|coupon-center-award\/award\/detail) script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/wechat_pay_coupon.js,requires-body=true,tag=WXCoinCK
 
+#建行生活签到
+http-request ^https:\/\/yunbusiness\.ccb\.com\/(clp_coupon|clp_service)\/txCtrl\?txcode=(A3341A038|autoLogin) script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jhsh_checkIn.js, requires-body=true, timeout=60, tag=CCBSignCK
 
 [MITM]
-hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com,m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com,mxsa.mxbc.net,www.wandawic.com,mcs-mimp-web.sf-express.com,gw.xiaocantech.com,payapp.weixin.qq.com
+hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com,m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com,mxsa.mxbc.net,www.wandawic.com,mcs-mimp-web.sf-express.com,gw.xiaocantech.com,payapp.weixin.qq.com,yunbusiness.ccb.com
