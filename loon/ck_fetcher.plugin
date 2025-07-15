@@ -8,17 +8,11 @@
 #获取AlphaCK 打开Alpha App-钱包-收到
 http-request https:\/\/minealpha\.net\/api\/ script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/alpha_cookie.js,requires-body=true, timeout=10,tag=AlphaCK
 
-#美团买菜-果园 AppCK
-#http-request https:\/\/mall\.meituan\.com\/api\/c\/mallcoin\/game\/fruit script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mtmc_fruit_cookie.js,requires-body=true, timeout=10,tag=MTMCFruitCK
-
-#美团 AppCK
-http-request https:\/\/lx0\.meituan\.com script-path=https://raw.githubusercontent.com/WalterYang689/qx_use/main/scripts/mt_cookie.js,requires-body=true, timeout=10,tag=MeituanCK
-
 #晓晓优选霸王餐
 http-response ^https:\/\/xxyx-client-api\.xiaoxiaoyouxuan\.com\/my script-path=https://raw.githubusercontent.com/fmz200/wool_scripts/main/Scripts/cookie/get_cookie.js,requires-body=true, timeout=10,tag=XXYXCK
 
 #小蚕霸王餐
-http-response ^https:\/\/gw\.xiaocantech\.com\/rpc script-path=https://gist.githubusercontent.com/Sliverkiss/250a02315f0a2c99f42da3b3573375c8/raw,timeout=60, tag=XCBWCCK
+http-response ^https:\/\/gw\.xiaocantech\.com\/rpc script-path=https://gist.githubusercontent.com/Sliverkiss/250a02315f0a2c99f42da3b3573375c8/raw, timeout=60, tag=XCBWCCK
 
 #阿里云盘
 http-request ^https:\/\/(auth|aliyundrive)\.alipan\.com\/v2\/account\/token script-path=https://gist.githubusercontent.com/Sliverkiss/33800a98dcd029ba09f8b6fc6f0f5162/raw/aliyun.js, requires-body=true, timeout=60, tag=AliYunPanCK
@@ -28,39 +22,9 @@ http-request ^https?:\/\/app\.bilibili\.com\/x\/resource\/fingerprint\? script-p
 
 http-request ^https?:\/\/m.bilibili.com/$ script-path=https://raw.githubusercontent.com/ClydeTime/BiliBili/main/js/BiliBiliDailyBonus.js, tag=BlBlWebCk
 
-#美团红包 使用方法2：美团APP -> 首页 -> 红包签到 -> 手动签到一次
-http-request ^https:\/\/i.meituan.com\/evolve\/signin\/signpost\/ script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/meituan/meituan.cookie.js, requires-body=true, timeout=60, tag=MeituanRPCK
-
-# 霸王茶姬小程序
-http-request ^https:\/\/(webapi|qmwebapi)\.qmai\.cn\/web\/(catering|catering2-apiserver)\/crm\/points-info script-path=https://gist.githubusercontent.com/Sliverkiss/4984f7f34d6df8bcdd1e13ecac4bba51/raw/bwcj.js, timeout=60, tag=BWCJCK
-
-# 雨晨ios
-http-request ^https:\/\/yuchen.tonghuaios.com\/users\?.+ script-path=https://raw.githubusercontent.com/Sliverkiss/GoodNight/master/Script/yuchenios.js, timeout=60, tag=YuCheniOSCK
-
-# 松鼠ios
-http-request ^https\:\/\/ios\.songshuyouxi\.com\/user script-path=https://raw.githubusercontent.com/Sliverkiss/GoodNight/master/Script/sxios.js, timeout=60, tag=SXiOSCK
-
-# 高德地图-福利中心签到
-http-response ^https:\/\/(m5(|-zb)|dache)\.amap\.com\/(ws\/yuece\/(act|openapi\/activity\/current)\/query|common\/(alipaymini|wxmini)\?_ENCRYPT=) script-path=https://raw.githubusercontent.com/wf021325/qx/master/task/ampDache.js, requires-body=true, timeout=60, tag=AmpDacheCK
-
-#顺丰快递-积分任务
-http-response ^https:\/\/mcs-mimp-web\.sf-express\.com\/mcs-mimp\/share\/weChat\/shareGiftReceiveRedirect.+ script-path=https://gist.githubusercontent.com/Sliverkiss/1fb1cf9cd7486d30752b1ba29b871e37/raw/sfsy.js, requires-body=true, timeout=60, tag=SFExpressCK
-
-#蜜雪冰城小程序
-http-response ^https:\/\/mxsa\.mxbc\.net\/api\/v1\/customer\/info script-path=https://gist.githubusercontent.com/Sliverkiss/865c82e42a5730bb696f6700ebb94cee/raw/mxbc.js, requires-body=true, timeout=60, tag=MXBCCK
-
-#万达智慧商业
-http-response ^https?:\/\/www\.wandawic\.com\/api\/foreground\/loginregister\/queryUser script-path=https://raw.githubusercontent.com/leiyiyan/resource/main/script/wdzhsy/wdzhsy.js,requires-body=true,tag=WDWSFCK
-
-#微信支付分
-http-response https:\/\/payapp\.weixin\.qq\.com\/(coupon-center-user\/home\/login|coupon-center-award\/award\/detail) script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/wechat_pay_coupon.js,requires-body=true,tag=WXCoinCK
-
-#建行生活签到
-http-request ^https:\/\/yunbusiness\.ccb\.com\/(clp_coupon|clp_service)\/txCtrl\?txcode=(A3341A038|autoLogin)  script-path=https://raw.githubusercontent.com/FoKit/Scripts/main/scripts/jhsh_checkIn.js,requires-body=true,tag=CCBSignCK
-
 
 #吉利汽车
 http-response ^https?:\/\/app\.geely\.com\/my\/getMyCenterCounts$ script-path=https://raw.githubusercontent.com/wf021325/qx/master/task/geely.js,requires-body=true,tag=GeelyCarCK
 
 [MITM]
-hostname = minealpha.net,mall.meituan.com,i.meituan.com,lx0.meituan.com,xxyx-client-api.xiaoxiaoyouxuan.com,app.bilibili.com,m.bilibili.com,*.amap.com,yuchen.tonghuaios.com, ios.songshuyouxi.com,auth.alipan.com, auth.aliyundrive.com,mxsa.mxbc.net,www.wandawic.com,mcs-mimp-web.sf-express.com,gw.xiaocantech.com,payapp.weixin.qq.com,yunbusiness.ccb.com,app.geely.com
+hostname = minealpha.net,xxyx-client-api.xiaoxiaoyouxuan.com,gw.xiaocantech.com,app.bilibili.com,m.bilibili.com,auth.alipan.com, auth.aliyundrive.com,mxsa.mxbc.net,mcs-mimp-web.sf-express.com,app.geely.com
